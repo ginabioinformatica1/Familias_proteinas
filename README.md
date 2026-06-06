@@ -11,4 +11,4 @@ wget -P datos/ https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.h
 gunzip datos/Pfam-A.hmm.gz
 
 # 3. Descarga de archivos fasta
-chmod +x pipeline/Descarga_formatos_fasta
+./pipeline/Descarga_formatos_fasta.sh
