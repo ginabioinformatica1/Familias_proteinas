@@ -24,3 +24,6 @@ hmmfetch -f datos/Pfam-A.hmm datos/familias_pfam_correctas.txt > datos/familias_
 
 # 7. Prueba de familias HMM completas (Temrinal de Ubuntu)
 grep -c "NAME" datos/familias_interes.hmm
+
+# 8. Realizar la búsqueda de dominios en las proteínas (hmmsearch)
+hmmsearch --tblout resultados/predicciones.txt datos/familias_interes.hmm datos/P00519.fasta
