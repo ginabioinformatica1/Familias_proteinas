@@ -13,7 +13,6 @@ acc_lines  <- lines[grep("^ACC", lines)]
 # Limpiar para quedarnos solo con el texto limpio
 names_pfam <- gsub("^NAME\\s+", "", name_lines)
 accs_pfam  <- gsub("^ACC\\s+", "", acc_lines)
-accs_pfam  <- gsub("\\..*$", "", accs_pfam) # Quita la versión (ej: PF00069.25 -> PF00069)
 
 # Crear una tabla de mapeo interna
 map_pfam <- data.frame(Name = names_pfam, Acc = accs_pfam, stringsAsFactors = FALSE)
