@@ -10,5 +10,5 @@ wget -P datos/ https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.h
 # 2. Descomprimir
 gunzip datos/Pfam-A.hmm.gz
 
-# 3. Descarga de archivos fasta
-Rscript pipeline/Descarga_formatos_fasta.R
+# 3. Descarga de archivos fasta en terminar R
+source("pipeline/Descarga_formatos_fasta.R")
