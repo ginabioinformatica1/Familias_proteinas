@@ -12,3 +12,9 @@ gunzip datos/Pfam-A.hmm.gz
 
 # 3. Descarga de archivos fasta en terminar R
 source("pipeline/Descarga_formatos_fasta.R")
+
+# 4. Indexar el archivo HMM (Terminal de Ubinti)
+hmmfetch --index datos/Pfam-A.hmm
+
+# 5. Extraer familias de interes (Temrinal de Ubuntu)
+hmmfetch -f datos/Pfam-A.hmm datos/familias_pfam.txt > datos/familias_interes.hmm
