@@ -5,7 +5,7 @@ OUTPUT_BUSQUEDA <- "resultados/predicciones_totales.txt"
 
 message("Iniciando el análisis HMMER desde R...")
 
-# 1. Listar todos los archivos de proteínas (.fasta) que descargamos en la carpeta datos
+# 1. Listar todos los archivos de proteínas (.fasta) que se descargaron en la carpeta datos
 archivos_fasta <- list.files(path = CARPETA_DATOS, pattern = "\\.fasta$", full.names = TRUE)
 
 # 2. Crear un solo archivo temporal que junte todas las proteínas
