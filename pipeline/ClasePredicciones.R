@@ -16,7 +16,6 @@ PrediccionesProteinas <- function(ruta_archivo) {
   
   # Leer el archivo .tsv de manera segura (maneja tabulaciones)
  tabla_datos <- read.table(ruta_archivo, header = TRUE, sep = "", stringsAsFactors = FALSE, check.names = FALSE)
-  )
   
   # Instanciar el objeto de la clase S4
   new(
