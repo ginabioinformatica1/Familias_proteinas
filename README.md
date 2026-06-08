@@ -42,6 +42,8 @@ Rscript pipeline/Codigo_pipeline.R
 Rscript pipeline/Transformar_tsv.R
 
 # 12. Creación de clase S4
+Para cargar y estructurar los resultados en un objeto de R, abrir la consola interactiva de R y ejecutar el siguiente bloque de código:
+
 # Cargar la estructura de la clase y sus métodos
 source("pipeline/ClasePredicciones.R")
 
@@ -53,4 +55,3 @@ mis_predicciones
 
 # Si se necesita extraer el data.frame interno para graficar o filtrar:
 df_limpio <- mis_predicciones@datos
-
