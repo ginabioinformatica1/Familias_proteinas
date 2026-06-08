@@ -15,7 +15,8 @@ PrediccionesProteinas <- function(ruta_archivo) {
   }
   
   # Leer el archivo .tsv de manera segura (maneja tabulaciones)
-  tabla_datos <- read.delim(ruta_archivo, sep = "\t", stringsAsFactors = FALSE)
+ tabla_datos <- read.table(ruta_archivo, header = TRUE, sep = "", stringsAsFactors = FALSE, check.names = FALSE)
+  )
   
   # Instanciar el objeto de la clase S4
   new(
@@ -32,6 +33,6 @@ setMethod("show", "PrediccionesProteinas", function(object) {
   cat("Fecha de análisis:", format(object@fecha_analisis, "%Y-%m-%d %H:%M:%S"), "\n")
   cat("Total de aciertos (hits) detectados:", object@total_hits, "\n")
   cat("\nPrimeros registros del set de datos:\n")
-  print(head(object@datos[, c("target.name", "query.name", "E.value", "score")], 5))
+  print(head(object@datos[, c("target", "name", "E-value", "score")], 5))
 })
 
