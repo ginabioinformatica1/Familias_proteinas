@@ -25,3 +25,13 @@ PrediccionesProteinas <- function(ruta_archivo) {
     total_hits = nrow(tabla_datos)
   )
 }
+
+# Método para que al imprimir el objeto nos dé un resumen amigable
+setMethod("show", "PrediccionesProteinas", function(object) {
+  cat("=== Objeto de Predicciones de Familias de Proteínas ===\n")
+  cat("Fecha de análisis:", format(object@fecha_analisis, "%Y-%m-%d %H:%M:%S"), "\n")
+  cat("Total de aciertos (hits) detectados:", object@total_hits, "\n")
+  cat("\nPrimeros registros del set de datos:\n")
+  print(head(object@datos[, c("target.name", "query.name", "E.value", "score")], 5))
+})
+

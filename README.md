@@ -42,5 +42,15 @@ Rscript pipeline/Codigo_pipeline.R
 Rscript pipeline/Transformar_tsv.R
 
 # 12. Creación de clase S4
+# Cargar la estructura de la clase y sus métodos
+source("pipeline/ClasePredicciones.R")
 
+# Convertir el archivo a objeto de R usando el constructor
+mis_predicciones <- PrediccionesProteinas("resultados/predicciones_totales.tsv")
+
+# Ver el resumen analítico
+mis_predicciones
+
+# Si se necesita extraer el data.frame interno para graficar o filtrar:
+df_limpio <- mis_predicciones@datos
 
