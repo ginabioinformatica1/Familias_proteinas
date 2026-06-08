@@ -28,4 +28,5 @@ grep -c "NAME" datos/familias_interes.hmm
 # 8. Correr el pipeline de análisis HMMER y procesar todas las proteínas, ejecuta el siguiente comando en la terminal:
 Rscript pipeline/Codigo_pipeline.R
 
-# 9. Cambio de archivo de resultados de txt a tsv
+# 9. Transformar el archivo de resultados (.txt) a un formato de tabla limpia (.tsv)
+Rscript pipeline/Transformar_tsv.R
