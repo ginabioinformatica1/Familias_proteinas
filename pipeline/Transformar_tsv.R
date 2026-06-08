@@ -6,21 +6,27 @@ archivo_tsv <- "resultados/predicciones_totales.tsv"
 lineas <- readLines(archivo_txt)
 
 # 3. Filtrar y limpiar el archivo
-# Nos quedamos solo con la línea de encabezado (la que tiene los nombres de las columnas)
-# y las líneas de datos (que no empiezan con #)
-linea_header <- lineas[grep("# target name", lineas)]
+# Nos quedamos con la línea exacta de HMMER que contiene los nombres reales
+linea_header <- lineas[grep("^#\\s+target name", lineas)]
 lineas_datos <- lineas[!grepl("^#", lineas)]
 
-# Limpiar el '#' inicial de la línea del header y recortar espacios
+# 4. Limpiar el '#' inicial del header
 linea_header <- sub("^#\\s*", "", linea_header)
 
-# 4. Unir el encabezado modificado con los datos
-contenido_limpio <- c(linea_header, lineas_datos)
+# Reemplazar los encabezados conflictivos con nombres unidos por guiones bajos (_)
+linea_header <- gsub("target name", "target_name", linea_header)
+linea_header <- gsub("query name", "query_name", linea_header)
+linea_header <- gsub("E-value", "E_value", linea_header)
+linea_header <- gsub("accession dom", "accession_dom", linea_header)
 
 # 5. Convertir la estructura de espacios múltiples a Tabuladores (\t)
-# HMMER usa múltiples espacios para alinear las columnas visualmente.
-# Reemplazamos dos o más espacios consecutivos por un tabulador.
-contenido_tsv <- gsub("\\s{2,}", "\t", contenido_limpio)
+linea_header_tsv <- gsub("\\s+", "\t", linea_header)
+
+# Hacemos lo mismo con los datos (limpiando espacios al inicio/final por seguridad si los hay)
+lineas_datos_tsv <- gsub("\\s+", "\t", trimws(lineas_datos))
+
+# Unimos todo
+contenido_tsv <- c(linea_header_tsv, lineas_datos_tsv)
 
 # 6. Guardar el nuevo archivo .tsv
 writeLines(contenido_tsv, archivo_tsv)
