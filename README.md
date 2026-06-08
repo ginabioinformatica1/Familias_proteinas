@@ -3,6 +3,7 @@
 Este repositorio contiene un pipeline automatizado para descargar secuencias de proteínas desde UniProt
 
 # PROCESO
+
 # 1. Creación de los archivos Identificadores_uniprot.txt y familias_pfam.txt. Ejecuta el siguiente comando en la terminal para crear los archivos de texto vacíos dentro de la carpeta 'datos':
 touch datos/Identificadores_uniprot.txt datos/familias_pfam.txt
 
@@ -12,7 +13,6 @@ wget -P datos/ https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.h
 
 # 3. Configuración de Gitignore
 # Incluir las siguientes líneas en el archivo gitignore:
-```text
 datos/Pfam-A.hmm.gz
 datos/Pfam-A.hmm
 datos/*.fasta
@@ -40,3 +40,7 @@ Rscript pipeline/Codigo_pipeline.R
 
 # 11. Transformar el archivo de resultados (.txt) a un formato de tabla limpia (.tsv)
 Rscript pipeline/Transformar_tsv.R
+
+# 12. Creación de clase S4
+
+
