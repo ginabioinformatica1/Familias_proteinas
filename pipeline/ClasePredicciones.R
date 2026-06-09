@@ -15,7 +15,7 @@ PrediccionesProteinas <- function(ruta_archivo) {
   }
   
   # Leer el archivo .tsv de manera segura (maneja tabulaciones)
- tabla_datos <- read.delim(ruta_archivo, sep = "\t", stringsAsFactors = FALSE)
+tabla_datos <- read.delim(ruta_archivo, sep = "\t", stringsAsFactors = FALSE, fill = TRUE, quote = "")
   
   # Instanciar el objeto de la clase S4
   new(
