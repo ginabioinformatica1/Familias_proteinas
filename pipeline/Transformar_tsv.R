@@ -1,23 +1,53 @@
-# 1. Leer todas las líneas del archivo original
-lineas <- readLines("resultados/predicciones_totales.txt")
+transformar_a_tsv <- function(archivo_entrada, archivo_salida) {
 
-# 2. Filtrar y quedarse solo con las líneas que NO empiezan con '#'
-# (Y que tampoco estén vacías)
-lineas_limpias <- lineas[!grepl("^#", lineas) & lineas != ""]
+  # Leer todas las líneas
+  lineas <- readLines(archivo_entrada)
 
-# 3. Convertir las líneas filtradas en una tabla de datos (Data Frame)
-# Usamos 'text = lineas_limpias' para que R lea directamente el texto en memoria
-datos <- read.table(text = lineas_limpias, sep = "", header = FALSE, stringsAsFactors = FALSE)
+  # Eliminar comentarios (#)
+  lineas_datos <- lineas[!grepl("^#", lineas)]
 
-# 4. Asignar nombres limpios a las columnas principales (opcional pero recomendado)
-colnames(datos)[1:5] <- c("target_name", "accession_target", "query_name", "accession_query", "E_value")
+  # Eliminar líneas vacías
+  lineas_datos <- lineas_datos[nchar(trimws(lineas_datos)) > 0]
 
-# 5. Guardar el resultado en formato .tsv (separado por tabuladores)
-write.table(datos, 
-            file = "resultados/predicciones_limpias.tsv", 
-            sep = "\t", 
-            row.names = FALSE, 
-            col.names = TRUE, 
-            quote = FALSE)
+  # Separar columnas por uno o más espacios
+  tabla <- read.table(
+    text = lineas_datos,
+    header = FALSE,
+    fill = TRUE,
+    stringsAsFactors = FALSE
+  )
 
-cat("¡Archivo transformado con éxito a .tsv!\n")
+  # Asignar nombres de columnas de tblout
+  colnames(tabla) <- c(
+    "target_name",
+    "target_accession",
+    "query_name",
+    "query_accession",
+    "E_value",
+    "score",
+    "bias",
+    "E_value_domain",
+    "score_domain",
+    "bias_domain",
+    "exp",
+    "reg",
+    "clu",
+    "ov",
+    "env",
+    "dom",
+    "rep",
+    "inc",
+    "descripcion"
+  )
+
+  # Guardar como TSV
+  write.table(
+    tabla,
+    archivo_salida,
+    sep = "\t",
+    row.names = FALSE,
+    quote = FALSE
+  )
+
+  cat("Archivo TSV generado:", archivo_salida, "\n")
+}
