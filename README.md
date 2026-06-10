@@ -1,6 +1,6 @@
 # Pipeline de Búsqueda con HMMER
 
-Este repositorio contiene un pipeline automatizado para descargar secuencias de proteínas desde UniProt
+Este repositorio contiene un pipeline automatizado para descargar secuencias de proteínas desde UniProt, filtrarlas y analizar por medio de modelos oclutos de Markov (HMM) mediante la suite de herramientas de HMMER
 
 # PROCESO
 
