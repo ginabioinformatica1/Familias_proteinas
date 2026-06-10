@@ -20,7 +20,7 @@ datos/*.fasta
 # 4. Descomprimir
 gunzip datos/Pfam-A.hmm.gz
 
-# 5. Descarga de archivos fasta en terminar R
+# 5. Descarga de archivos fasta en terminal R
 source("pipeline/Descarga_formatos_fasta.R")
 
 # 6. Indexar el archivo HMM (Terminal de Ubuntu)
